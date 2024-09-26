@@ -35,7 +35,7 @@ class App extends Component {
  
   refreshList = () => {
     axios   //Axios to send and receive HTTP requests
-      .get("http://localhost:8000/api/tasks/")
+      .get("https://kbkb.pythonanywhere.com/api/tasks/")
       .then(res => this.setState({ taskList: res.data }))
       .catch(err => console.log(err));
   };
@@ -120,13 +120,13 @@ class App extends Component {
     if (item.id) {
       // if old post to edit and submit
       axios
-        .put(`http://localhost:8000/api/tasks/${item.id}/`, item)
+        .put(`https://kbkb.pythonanywhere.com/api/tasks/${item.id}/`, item)
         .then((res) => this.refreshList());
       return;
     }
     // if new post to submit
     axios
-      .post("http://localhost:8000/api/tasks/", item)
+      .post("https://kbkb.pythonanywhere.com/api/tasks/", item)
       .then((res) => this.refreshList());
   };
 
@@ -134,7 +134,7 @@ class App extends Component {
   handleDelete = (item) => {
       alert("delete" + JSON.stringify(item));
     axios
-      .delete(`http://localhost:8000/api/tasks/${item.id}/`)
+      .delete(`https://kbkb.pythonanywhere.com/api/tasks/${item.id}/`)
       .then((res) => this.refreshList());
   };
  
